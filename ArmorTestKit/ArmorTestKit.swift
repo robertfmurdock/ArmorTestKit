@@ -11,11 +11,11 @@ public func assertEquals <T : Equatable> (expected: T, actual:T?, file: String =
     XCTAssert(expected == actual, "Expected: \(expected) was not: \(actual)", file: file, line: line)
 }
 
-public func assertEquals <T : Equatable where T : CustomStringConvertible> (expected: T, actual:T, file: String = __FILE__, line: UInt = __LINE__ ) {
+public func assertEquals <T : Equatable where T : CustomStringConvertible> (expected: T, _ actual:T, file: String = __FILE__, line: UInt = __LINE__ ) {
     XCTAssert(expected == actual, "Expected: \(expected.description) was not: \(actual.description)", file: file, line: line)
 }
 
-public func assertEquals <T : Equatable where T : CustomStringConvertible> (expected: T, actual:T?, file: String = __FILE__, line: UInt = __LINE__ ) {
+public func assertEquals <T : Equatable where T : CustomStringConvertible> (expected: T, _ actual:T?, file: String = __FILE__, line: UInt = __LINE__ ) {
     XCTAssert(expected == actual, "Expected: \(expected.description) was not: \(actual?.description ?? nil)", file: file, line: line)
 }
 
@@ -23,7 +23,15 @@ public func assertEquals <T : Equatable, K> (expected: T, _ actual:K , file: Str
     if let checkedActual = actual as? T {
         XCTAssert(expected == checkedActual, "Expected: \(expected) was not: \(checkedActual)", file: file, line: line)
     } else {
-        XCTFail("These were not of the same type.", file: file, line: line)
+        XCTFail("These were not of the same type \(expected) \(actual).", file: file, line: line)
+    }
+}
+
+public func assertEquals <T : Equatable, K> (expected: T, _ actual:K? , file: String = __FILE__, line: UInt = __LINE__ ) {
+    if let checkedActual = actual as? T {
+        XCTAssert(expected == checkedActual, "Expected: \(expected) was not: \(checkedActual)", file: file, line: line)
+    } else {
+        XCTFail("These were not of the same type \(expected) \(actual).", file: file, line: line)
     }
 }
 
