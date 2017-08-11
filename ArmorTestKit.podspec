@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'ArmorTestKit'
-  s.version = '2.0'
+  s.version = '3.0'
   s.social_media_url = 'https://twitter.com/zeGreatRoB'
   s.homepage = 'http://robertfmurdock.github.io'
   s.authors = { 'Rob Murdock' => 'rmurdock@pillartechnology.com' }
