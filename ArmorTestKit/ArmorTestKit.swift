@@ -43,7 +43,7 @@ public func assertSame <T : AnyObject, K> (_ expected: T, _ actual: K!, file: St
     if let checkedActual = actual as? T {
         XCTAssert(expected === checkedActual, "Expected: \(expected) was not: \(checkedActual)", file: file, line: line)
     } else {
-        XCTFail("These were not of the same type. Expected: \(expected) Actual: \(actual)", file: file, line: line)
+        XCTFail("These were not of the same type. Expected: \(expected) Actual: \(String(describing: actual))", file: file, line: line)
     }
 }
 
